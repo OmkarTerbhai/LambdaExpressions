@@ -2,6 +2,7 @@ package v3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class HotelService {
     static List<Hotel> hotels = null;
@@ -9,21 +10,12 @@ public class HotelService {
         hotels = new ArrayList<>();
         init(hotels);
 
-//        System.out.println(filterHotels(new FilteringCondition() {
-//            @Override
-//            public boolean test(Hotel h) {
-//                return h.getCity().equals("Pune");
-//            }
-//        }));
 
-//        System.out.println(filterHotels((h) -> h.getCity().equals("Pune")));
 
-        System.out.println(filterHotels((Hotel h) -> h.getPrice() < 5000));
-
-//        System.out.println(filterHotels((Hotel h) -> h.getRating() >= 3));
+        System.out.println(filterHotels((h) -> h.getPrice() < 5000));
     }
 
-    private static List<Hotel> filterHotels(FilteringCondition fc) {
+    private static List<Hotel> filterHotels(Predicate<Hotel> fc) {
         List<Hotel> filteredHotels = new ArrayList<>();
 
         for(Hotel h : hotels) {
